@@ -6,8 +6,10 @@ import Header from "./components/Header";
 import FeedbackList from "./components/FeedbackList";
 import feedbackData from "./data/FeedbackData";
 import FeedbackStats from "./components/FeedbackStats";
+import AboutIconLink from "./components/AboutIconLink";
 import FeedbackForm from "./components/FeedbackForm";
 import AboutPage from "./pages/AboutPage";
+import { FeedbackProvider } from "./context/FeedbackContext";
 
 const App = () => {
   const [feedback, setFeedback] = useState(feedbackData);
@@ -24,6 +26,7 @@ const App = () => {
   };
 
   return (
+    <FeedbackProvider>
     <Router>
       <Header text="Feedback UI" />
       <div className="container">
@@ -44,8 +47,11 @@ const App = () => {
           ></Route>
           <Route path="/about" element={<AboutPage />} />
         </Routes>
+
+        <AboutIconLink />
       </div>
     </Router>
+    </FeedbackProvider>
   );
 };
 
